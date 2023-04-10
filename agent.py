@@ -64,12 +64,18 @@ def agent():
         )
     review_prompt = PromptTemplate(
         input_variables=["thread"],
-        template="""You are a content review and consolidation agent.  You will recieve a numbered list of paragraphs {thread}.
-        your job is make sure that each paragraph in the list is ALWAYS under 140 characts long.
+        template="""You are a content review and consolidation agent.  You will recieve a list of paragraphs {thread}.
+        Ensure that each paragraph in the list has no more than 140 character. If a paragraph exceeds 140 characters, split it into two or more smaller paragraphs.
         If a paragraph is longer than 140 characters, you should split it into two or more paragraphs.
-        If you split a paragraph, you should add a "/" and the paragraph number to the end of the paragraph.
+        Every paragraph should end with a "/" and the paragraph number. For example, "/1".  If you split a paragraph make sure to update the paragraph number.
 
-        Make sure that the paragraphs are in the correct order.
+        Remember, the maximum length of each paragraph must be less than 140 characters(letters).  DO NOT INCLUDE A PARAGRAPH WITH MORE THAN 140 CHARACTERS.
+        Make sure that the paragraphs are in the correct order and that their are no repeat numbers.
+
+        The first paragraph should always contain the following.
+
+        "###### GPT-3.5-Turbo ######"
+
         """
         )
 
@@ -78,7 +84,7 @@ def agent():
 
     overall_chain = SequentialChain(chains=[summary_chain, review_chain], input_variables=["chat_history", "questions"], output_variables=["thread", "review"], verbose=True)
     response = overall_chain({"chat_history" : chat_history, "questions": questions})
-    #new_tweets = response.split("\n")
-    #parsed_content = [element for element in new_tweets if element != '']
-    print(response)
-    #return parsed_content
+    response_text = response["review"]
+    response_array = response_text.split("\n\n")
+    print(response_array)
+    return response_array

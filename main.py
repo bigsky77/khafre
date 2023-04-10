@@ -3,6 +3,7 @@ import hashlib
 import os
 import re
 import json
+import time
 import requests
 import redis
 import agent
@@ -75,6 +76,8 @@ def post_tweet_thread(tweets, token):
 
         if response.status_code == 201:
             previous_tweet_id = response_json["data"]["id"]
+
+            time.sleep(15)
         else:
             print(f"Error posting tweet: {response_json}")
             break

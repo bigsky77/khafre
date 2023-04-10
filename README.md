@@ -1,4 +1,4 @@
-### Khafre
+# Khafre
 
 Have you ever been lost inside a **MASSIVE** code base or complex system? What if you wanted high-level analysis of the system without getting lost in the weeds?
 
