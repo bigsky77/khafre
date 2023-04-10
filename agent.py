@@ -78,7 +78,7 @@ def agent():
 
     overall_chain = SequentialChain(chains=[summary_chain, review_chain], input_variables=["chat_history", "questions"], output_variables=["thread", "review"], verbose=True)
     response = overall_chain({"chat_history" : chat_history, "questions": questions})
-    new_tweets = response.split("\n")
-    parsed_content = [element for element in new_tweets if element != '']
-    print(parsed_content)
-    return parsed_content
+    #new_tweets = response.split("\n")
+    #parsed_content = [element for element in new_tweets if element != '']
+    print(response)
+    #return parsed_content
