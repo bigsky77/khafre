@@ -29,6 +29,5 @@ st_refreshed_token = '"{}"'.format(refreshed_token)
 j_refreshed_token = json.loads(st_refreshed_token)
 main.r.set("token", j_refreshed_token)
 
-# Get the dog fact
 tweets = main.parse_codebase()
 main.post_tweet_thread(tweets, refreshed_token)

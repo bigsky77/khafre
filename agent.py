@@ -72,10 +72,6 @@ def agent():
         Remember, the maximum length of each paragraph must be less than 140 characters(letters).  DO NOT INCLUDE A PARAGRAPH WITH MORE THAN 140 CHARACTERS.
         Make sure that the paragraphs are in the correct order and that their are no repeat numbers.
 
-        The first paragraph should always contain the following.
-
-        "###### GPT-3.5-Turbo ######"
-
         """
         )
 
