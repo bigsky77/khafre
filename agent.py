@@ -14,6 +14,8 @@ load_dotenv()
 
 # set the OpenAI API key
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+ACTIVELOOP_TOKEN = os.getenv("ACTIVELOOP_TOKEN", "")
+
 embeddings = OpenAIEmbeddings()
 
 def agent():

@@ -81,6 +81,7 @@ def post_tweet_thread(tweets, token):
             print(f"Error posting tweet: {response_json}")
             break
 
+
 @app.route("/")
 def demo():
     global twitter
@@ -90,6 +91,7 @@ def demo():
     )
     session["oauth_state"] = state
     return redirect(authorization_url)
+
 
 @app.route("/oauth/callback", methods=["GET"])
 def callback():
